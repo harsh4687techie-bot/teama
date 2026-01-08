@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Farmers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🌾 Direct Market</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/farmer-register">Farmer Registration</a></li>
+                <li><a href="/buyer-register">Buyer Registration</a></li>
+                <li><a href="/view-farmers">View Farmers</a></li>
+                <li><a href="/view-buyers">View Buyers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Table Section -->
+    <section class="table-section">
+        <div class="container">
+            <h2 class="section-title">Registered Farmers</h2>
+            <p class="section-description">Browse all farmers and their available crops</p>
+
+            {% if farmers %}
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Farmer Name</th>
+                            <th>Crop Type</th>
+                            <th>Quantity (Kg)</th>
+                            <th>Price per Kg (₹)</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for farmer in farmers %}
+                        <tr>
+                            <td>{{ farmer['id'] }}</td>
+                            <td>{{ farmer['name'] }}</td>
+                            <td>{{ farmer['crop_type'] }}</td>
+                            <td>{{ farmer['quantity'] }}</td>
+                            <td>₹{{ farmer['price'] }}</td>
+                            <td>{{ farmer['contact'] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="no-data">
+                <p>No farmers registered yet.</p>
+                <a href="/farmer-register" class="btn btn-primary">Register as Farmer</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Farmer-Buyer Direct Market. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

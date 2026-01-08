@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🌾 Direct Market</h1>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/farmer-register">Farmer Registration</a></li>
+                <li><a href="/buyer-register">Buyer Registration</a></li>
+                <li><a href="/view-farmers">View Farmers</a></li>
+                <li><a href="/view-buyers">View Buyers</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Registration Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">Farmer Registration</h2>
+                <p class="form-description">Register your crops to connect with potential buyers</p>
+                
+                <!-- Registration Form -->
+                <form method="POST" action="/farmer-register" class="registration-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="crop_type">Crop Type</label>
+                        <input type="text" id="crop_type" name="crop_type" placeholder="e.g., Wheat, Rice, Corn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity (in Kg)</label>
+                        <input type="number" id="quantity" name="quantity" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price per Kg (₹)</label>
+                        <input type="number" id="price" name="price" step="0.01" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="text" id="contact" name="contact" placeholder="10-digit mobile number" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Register</button>
+                </form>
+
+                <div class="form-footer">
+                    <p>Already registered? <a href="/view-farmers">View all farmers</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Farmer-Buyer Direct Market. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
